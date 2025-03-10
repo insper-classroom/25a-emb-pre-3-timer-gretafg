@@ -35,7 +35,6 @@ int main() {
     gpio_set_irq_enabled_with_callback(BTN_PIN_R, GPIO_IRQ_EDGE_FALL, true,
                                        &btn_callback);
 
-    int timer_0_hz = 5;
     repeating_timer_t timer_0;
 
     while (true) {
@@ -49,7 +48,7 @@ int main() {
         }
         if (flag_f_r) {
             if (!g_timer_0){
-                if (add_repeating_timer_us(1000000 / timer_0_hz, 
+                if (add_repeating_timer_ms(500, 
                     timer_0_callback,
                     NULL, 
                     &timer_0)) {
